@@ -6,6 +6,9 @@ class Traverser:
   def __init__(self):
     pass
 
+  # traverses root_dir, considers all contained folders as
+  #  artist folders
+  # writes results into file
   def traverse(self, root_dir, out_filename):
     print('Starting.')
     out_file = open(out_filename, "w", encoding="utf8")
@@ -13,13 +16,19 @@ class Traverser:
     special_folders = self.get_special_folders()
 
     artist_dirs = os.listdir(root_dir)
+
+    # "regular" folders
     for folder in artist_dirs:
-      
-      if not folder in special_folders:
-      
+      # ignore special folders
+      if not folder in special_folders:      
         artist_dir = os.path.join(root_dir, folder)
         if (os.path.isdir(artist_dir)):
           self.print_artist_folder(artist_dir, folder, out_file)
+
+    # "_Various Artist"
+    various_artists_dir = os.path.join(root_dir, '_Various Artists')
+    self.print_artist_folder(various_artists_dir, 'Various Artists', out_file)
+
     print('See ' + out_filename)
 
   # inside artist_dir, lists all folders
