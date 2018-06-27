@@ -22,10 +22,14 @@ class Traverser:
           self.print_artist_folder(artist_dir, folder, out_file)
     print('See ' + out_filename)
 
+  # inside artist_dir, lists all folders
+  # (which must contain albums except for the [Info] folder)
   def print_artist_folder(self, artist_dir, artist_name, out_file):
     album_folders = os.listdir(artist_dir)
     for album_folder in album_folders:
-      out_file.write(artist_name + "\t" + album_folder + "\n")
+      if album_folder != '[Info]':
+        out_file.write(artist_name + "\t" + album_folder + "\n")
 
+  # reserved folder names
   def get_special_folders(self):
     return ['[Live Mixes]', '[Other]', '[Spoken Word]', '__Eval', '__New (must have tags)', '_Einzelne', '_Various Artists']
