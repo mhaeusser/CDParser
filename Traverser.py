@@ -6,10 +6,11 @@ class Traverser:
   def __init__(self):
     pass
 
-  # traverses root_dir, considers all contained folders as
-  #  artist folders
-  # writes results into file
   def traverse(self, root_dir, out_filename):
+    """
+    traverses root_dir, considers all contained folders as artist folders
+    writes results into file
+    """    
     print('Starting.')
     out_file = open(out_filename, "w", encoding="utf8")
 
@@ -31,14 +32,16 @@ class Traverser:
 
     print('See ' + out_filename)
 
-  # inside artist_dir, lists all folders
-  # (which must contain albums except for the [Info] folder)
   def print_artist_folder(self, artist_dir, artist_name, out_file):
+    """
+    inside artist_dir, lists all folders
+    (which must contain albums except for the [Info] folder)
+    """
     album_folders = os.listdir(artist_dir)
     for album_folder in album_folders:
       if album_folder != '[Info]':
         out_file.write(artist_name + "\t" + album_folder + "\n")
 
-  # reserved folder names
   def get_special_folders(self):
+    """reserved folder names"""
     return ['[Live Mixes]', '[Other]', '[Spoken Word]', '__Eval', '__New (must have tags)', '_Einzelne', '_Various Artists']
