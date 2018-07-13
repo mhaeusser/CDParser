@@ -28,12 +28,13 @@ class DirParser:
           print('please check ' + artist_dir)
     return dict
 
-  def print_artist_folder(self, artist_dir, artist_name, out_file):
+  def format_dict(self, dict):
     """
-    inside artist_dir, lists all folders
-    (which must contain albums except for the [Info] folder)
+    pretty-prints dict
     """
-    album_folders = os.listdir(artist_dir)
-    for album_folder in album_folders:
-      if album_folder != '[Info]':
-        out_file.write(artist_name + "\t" + album_folder + "\n")
+    text = ''
+    keys = dict.keys()
+    for key in keys:
+      for elem in dict[key]:
+        text += key + "   ->   " + elem + "\n"
+    return text
