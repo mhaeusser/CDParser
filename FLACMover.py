@@ -24,3 +24,14 @@ class FLACMover:
         flac_dir = os.path.join(flac_root_dir, artist, album)
         if os.path.exists(flac_dir):
           print("exists: " + flac_dir)
+          self.move_flac(mp3_dir, flac_dir)
+        else:
+          print("mp3 only: " + mp3_dir)
+
+  def move_flac(self, mp3_dir, flac_dir):
+    new_mp3_dir = os.path.join(mp3_dir, 'mp3')
+    new_flac_dir = os.path.join(mp3_dir, 'flac')
+    # mkdir new_mp3_dir
+    # mkdir new_flac_dir
+    print('move all files from ' + mp3_dir + ' into ' + new_mp3_dir)
+    print('move all files from ' + flac_dir + ' into ' + new_flac_dir)
