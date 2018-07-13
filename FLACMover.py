@@ -10,7 +10,7 @@ class FLACMover:
     """
     """
     dirParser = DirParser()
-    folders_to_ignore = ['[Live Mixes]', '[Other]', '[Spoken Word]', '__Eval', '__New (must have tags)', '_Einzelne', '_Various Artists']
+    folders_to_ignore = ['___FLAC', '[Live Mixes]', '[Other]', '[Spoken Word]', '__Eval', '__New (must have tags)', '_Einzelne', '_Various Artists']
     root_dir = 'C:/Users/mathaeus/Music/_SKA'
     dict = dirParser.traverse(mp3_root_dir, folders_to_ignore)
 
@@ -33,5 +33,5 @@ class FLACMover:
     new_flac_dir = os.path.join(mp3_dir, 'flac')
     # mkdir new_mp3_dir
     # mkdir new_flac_dir
-    print('move all files from ' + mp3_dir + ' into ' + new_mp3_dir)
-    print('move all files from ' + flac_dir + ' into ' + new_flac_dir)
+    print('(1) Move all files from ' + mp3_dir + ' into ' + new_mp3_dir)
+    print('(2) Move all files from ' + flac_dir + ' into ' + new_flac_dir + '\n')
