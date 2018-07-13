@@ -10,7 +10,7 @@ class DirParserRunner:
     dict = dirParser.traverse(root_dir, folders_to_ignore)
 
     va_dir = os.path.join(root_dir, '_Various Artists')
-    dict[va_dir] = os.listdir(va_dir)
+    dict['_Various Artists'] = os.listdir(va_dir)
 
     text = dirParser.format_dict(dict)
     print(text)

@@ -23,7 +23,7 @@ class DirParser:
         if (os.path.isdir(abs_artist_dir)):
           # get list of contained folders, add them
           album_folders = os.listdir(abs_artist_dir)
-          dict[abs_artist_dir] = album_folders
+          dict[artist_dir] = album_folders
         else:
           print('please check ' + artist_dir)
     return dict
