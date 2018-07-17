@@ -1,4 +1,5 @@
 import os
+import shutil
 
 # Traverses artist and album directories.
 class FLACMover:
@@ -31,7 +32,11 @@ class FLACMover:
   def move_flac(self, mp3_dir, flac_dir):
     new_mp3_dir = os.path.join(mp3_dir, 'mp3')
     new_flac_dir = os.path.join(mp3_dir, 'flac')
-    # mkdir new_mp3_dir
-    # mkdir new_flac_dir
+
     print('(1) Move all files from ' + mp3_dir + ' into ' + new_mp3_dir)
+    os.mkdir(new_mp3_dir)
+    # move * new_mp3_dir
+    #shutil.move(mp3_dir, new_mp3_dir)
     print('(2) Move all files from ' + flac_dir + ' into ' + new_flac_dir + '\n')
+    os.rename(flac_dir, new_flac_dir)
+    # mkdir new_flac_dir
