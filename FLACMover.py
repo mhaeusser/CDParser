@@ -1,5 +1,6 @@
 import os
 import shutil
+import glob
 
 # Traverses artist and album directories.
 class FLACMover:
@@ -35,6 +36,10 @@ class FLACMover:
 
     print('(1) Move all files from ' + mp3_dir + ' into ' + new_mp3_dir)
     os.mkdir(new_mp3_dir)
+    files = glob.iglob(os.path.join(mp3_dir, "*.mp3"))
+    for file in files:
+      if os.path.isfile(file):
+        shutil.move(file, new_mp3_dir)
     # move * new_mp3_dir
     #shutil.move(mp3_dir, new_mp3_dir)
     print('(2) Move all files from ' + flac_dir + ' into ' + new_flac_dir + '\n')
