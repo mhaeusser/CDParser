@@ -3,6 +3,7 @@ import shutil
 import glob
 
 # Traverses artist and album directories.
+# This was a one-off tool which has served its purpose. Therefore, not many comments...
 class FLACMover:
 
   def __init__(self):
@@ -10,6 +11,8 @@ class FLACMover:
 
   def traverse(self, mp3_root_dir, flac_root_dir):
     """
+	Traverses folders below mp3_root_dir and checks if there are corresponding folders below flac_root_dir.
+	If so, creates an mp3 and a flac folder and moves the files there.
     """
     dirParser = DirParser()
     folders_to_ignore = ['___FLAC', '[Live Mixes]', '[Other]', '[Spoken Word]', '__Eval', '__New (must have tags)', '_Einzelne', '_Various Artists']
@@ -40,8 +43,5 @@ class FLACMover:
     for file in files:
       if os.path.isfile(file):
         shutil.move(file, new_mp3_dir)
-    # move * new_mp3_dir
-    #shutil.move(mp3_dir, new_mp3_dir)
     print('(2) Move all files from ' + flac_dir + ' into ' + new_flac_dir + '\n')
     os.rename(flac_dir, new_flac_dir)
-    # mkdir new_flac_dir
